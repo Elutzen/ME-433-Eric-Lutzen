@@ -27,7 +27,7 @@
 #pragma config WDTPS = PS1048576 // use slowest wdt
 #pragma config WINDIS = OFF // wdt no window mode
 #pragma config FWDTEN = OFF // wdt disabled
-#pragma config FWDTWINSZ = WISZ_25 // wdt window at 25%
+#pragma config FWDTWINSZ = WINSZ_25 // wdt window at 25%
 
 // DEVCFG2 - get the sysclk clock to 48MHz from the 8MHz crystal
 #pragma config FPLLIDIV = DIV_2 // divide input clock to be in range 4-5MHz
@@ -71,6 +71,8 @@ int main() {
         _CP0_SET_COUNT(0);
         LATAbits.LATA4 = 1; //toggle LED
         while(_CP0_GET_COUNT()<12000){
+            _CP0_SET_COUNT(0); 
+            LATAbits.LATA4 = 0;
             while(PORTBbits.RB4 ==0){;} //pause when button pushed
             
         }
