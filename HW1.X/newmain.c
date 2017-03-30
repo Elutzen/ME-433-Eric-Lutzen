@@ -17,7 +17,7 @@
 #pragma config CP = OFF // no code protect
 
 // DEVCFG1
-#pragma config FNOSC = FRCPLL // use primary oscillator with pll
+#pragma config FNOSC = PRIPLL // use primary oscillator with pll
 #pragma config FSOSCEN = OFF // turn off secondary oscillator
 #pragma config IESO = OFF // no switching clocks
 #pragma config POSCMOD = HS // high speed crystal mode
@@ -33,8 +33,8 @@
 #pragma config FPLLIDIV = DIV_2 // divide input clock to be in range 4-5MHz
 #pragma config FPLLMUL = MUL_24 // multiply clock after FPLLIDIV
 #pragma config FPLLODIV = DIV_2 // divide clock after FPLLMUL to get 48MHz
-#pragma config UPLLIDIV = DIV_4 // divider for the 8MHz input clock, then multiplied by 12 to get 48MHz for USB
-#pragma config UPLLEN = ON // USB clock on
+#pragma config UPLLIDIV = DIV_2 // divider for the 8MHz input clock, then multiplied by 12 to get 48MHz for USB
+#pragma config UPLLEN = OFF // USB clock on
 
 // DEVCFG3
 #pragma config USERID = 0 // some 16bit userid, doesn't matter what
@@ -68,13 +68,14 @@ int main() {
     __builtin_enable_interrupts();
 
     while(1) {
-        _CP0_SET_COUNT(0);
-        LATAbits.LATA4 = 0; //toggle LED
-        while(_CP0_GET_COUNT()<12000){
+        while(PORTBbits.RB4==1){
+            _CP0_SET_COUNT(0);
+            LATAbits.LATA4 = 0; //toggle LED
+            while(_CP0_GET_COUNT()<12000){}
             _CP0_SET_COUNT(0); 
             LATAbits.LATA4 = 1;
-            while(PORTBbits.RB4 ==0){;} //pause when button pushed
-            
+            while(_CP0_GET_COUNT()<12000){}
         }
+        
     }
 }
