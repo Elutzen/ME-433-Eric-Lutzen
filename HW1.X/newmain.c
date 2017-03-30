@@ -69,10 +69,10 @@ int main() {
 
     while(1) {
         _CP0_SET_COUNT(0);
-        LATAbits.LATA4 = 1; //toggle LED
+        LATAbits.LATA4 = 0; //toggle LED
         while(_CP0_GET_COUNT()<12000){
             _CP0_SET_COUNT(0); 
-            LATAbits.LATA4 = 0;
+            LATAbits.LATA4 = 1;
             while(PORTBbits.RB4 ==0){;} //pause when button pushed
             
         }
