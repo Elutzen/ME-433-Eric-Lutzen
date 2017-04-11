@@ -6,9 +6,10 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "PIC_config.h"
 #include "SPI_config.h"
-#include<math.h>
+#include "math.h"
 
 
 /*

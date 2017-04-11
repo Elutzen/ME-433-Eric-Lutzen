@@ -14,6 +14,8 @@
     Describe the purpose of this file.
  */
 /* ************************************************************************** */
+#ifndef PIC_config
+#define PIC_config
 
 #include<xc.h>           // processor SFR definitions
 #include<sys/attribs.h>  // __ISR macro
@@ -52,3 +54,5 @@
 #pragma config IOL1WAY = OFF // allow multiple reconfigurations
 #pragma config FUSBIDIO = ON // USB pins controlled by USB module
 #pragma config FVBUSONIO = ON // USB BUSON controlled by USB module
+
+#endif
