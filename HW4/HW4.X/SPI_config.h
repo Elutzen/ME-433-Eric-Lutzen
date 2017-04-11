@@ -21,7 +21,7 @@
 #include <xc.h>
 #include <sys/attribs.h>
 
-#define CS LATBits.LAT8 //chip select = B7
+#define CS LATBbits.LATB7 //chip select = B7
 
 unsigned char SPI_IO(unsigned char o);
 

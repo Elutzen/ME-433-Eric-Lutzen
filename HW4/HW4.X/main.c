@@ -6,11 +6,9 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <PIC_config.h>
-#include <PIC_config.h>
-#include <SPI_config.h>
-#include "math.h"
+#include "PIC_config.h"
+#include "SPI_config.h"
+#include<math.h>
 
 
 /*
@@ -27,6 +25,7 @@ int main() {
     while(1){
         cycle();
     }
+    return 0;
 }
 
 void waves(){
@@ -35,5 +34,18 @@ void waves(){
 		triangleWave[i] = 255 * i / 200;
 		sineWave[i] = 127.5 + 127.5 * sin(2 * 3.1415926 * 10 * (i % 100) / 1000);
 	}  
+}
+
+void cycle(){
+    static int j = 0;
+    if(_CP0_GET_COUNT() >24000){
+        _CP0_SET_COUNT(0);
+        setOutputVoltage(0,sineWave[j]);
+        setOutputVoltage(1,triangleWave[j]);
+        j++;
+        if(j>199){
+            j=0;
+        }
+    }
 }
 
