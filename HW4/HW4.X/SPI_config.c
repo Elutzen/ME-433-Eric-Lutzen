@@ -44,7 +44,6 @@ unsigned char SPI_IO(unsigned char o) {
 void setOutputVoltage(char output, unsigned char voltage){
     
     CS = 0;
-    SPI_IO();
-    SPI_IO();
+    SPI_IO((output<<15)|(0x7)|(voltage<<4));
     CS = 1;
 }

@@ -27,4 +27,6 @@ unsigned char SPI_IO(unsigned char o);
 
 void initSPI();
 
+void setOutputVoltage(char output, unsigned char voltage);
+
 #endif
