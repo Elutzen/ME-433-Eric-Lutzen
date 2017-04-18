@@ -4,11 +4,11 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>HW4</name>
-            <creation-uuid>0e0ed45c-5267-44b4-a6ea-463f5bd06440</creation-uuid>
+            <creation-uuid>14054956-33fa-4654-8482-bfb9222bdf33</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
-            <header-extensions>h</header-extensions>
+            <header-extensions/>
             <asminc-extensions/>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
