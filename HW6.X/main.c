@@ -46,3 +46,19 @@
 #pragma config FUSBIDIO = ON // USB pins controlled by USB module
 #pragma config FVBUSONIO = ON // USB BUSON controlled by USB module
 
+void character(char c, unsigned short x, unsigned short y){
+    int temp = (int)c - 32;
+    int col = 0;
+    int row = 0;
+    for(col = 0; col < 5; col++){
+        c = 0x01;
+        for(row = 0; row< 8; row++){
+            if((ASCII[temp][col] & c) >> row){
+                LCD_drawPixel(x+col,y+row,0x0000);
+            } else {
+                LCD_drawPixel(x + col,y +row, 0x0000);
+            }
+            c = c <<1;
+        }
+    }
+}
