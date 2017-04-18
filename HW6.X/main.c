@@ -57,11 +57,12 @@ void character(char c, unsigned short x, unsigned short y){
             if((ASCII[temp][col] & c) >> row){
                 LCD_drawPixel(x+col,y+row,0x0000);
             } else {
-                LCD_drawPixel(x + col,y +row, 0x0000);
+                LCD_drawPixel(x + col,y +row, 0xFFFF);
             }
             c = c <<1;
         }
     }
+}
     
     void string(char * msg, int x, int y){
         int i = 0;
@@ -78,8 +79,9 @@ void character(char c, unsigned short x, unsigned short y){
         __builtin_enable_interrupts();
         LCD_init();
         
-        LCD_clearScreen(0x0000);
+        LCD_clearScreen(0xFFFF);
         char message[200];
+        sprintf(message,"HELLO WORLD");
+        string(message,28,30);
         return 0;
     }
-}

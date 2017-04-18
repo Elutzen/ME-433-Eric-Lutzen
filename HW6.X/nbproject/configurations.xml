@@ -21,7 +21,6 @@
     <itemPath>ILI9163C.c</itemPath>
     <itemPath>ILI9163C.h</itemPath>
     <itemPath>main.c</itemPath>
-    <itemPath>pic_config.h</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
