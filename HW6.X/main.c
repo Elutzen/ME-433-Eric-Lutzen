@@ -7,10 +7,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "math.h"
+#include "ILI9163C.h"
 #include <xc.h>
 #include <sys/attribs.h>
 
+void character(char c, unsigned short col, unsigned short row);
 // DEVCFG0
 #pragma config DEBUG = OFF // no debugging
 #pragma config JTAGEN = OFF // no jtag
@@ -60,5 +61,25 @@ void character(char c, unsigned short x, unsigned short y){
             }
             c = c <<1;
         }
+    }
+    
+    void string(char * msg, int x, int y){
+        int i = 0;
+        int j = 0;
+        while(msg[i]){
+            character(msg[i], x + (j%19)*6,y+10*(j/10));
+            i++;
+            j++;
+        }
+    }
+    int main(){
+        __builtin_disable_interrupts();
+        
+        __builtin_enable_interrupts();
+        LCD_init();
+        
+        LCD_clearScreen(0x0000);
+        char message[200];
+        return 0;
     }
 }
