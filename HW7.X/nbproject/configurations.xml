@@ -18,11 +18,7 @@
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>ILI9163C.c</itemPath>
-    <itemPath>ILI9163C.h</itemPath>
     <itemPath>main.c</itemPath>
-    <itemPath>spi.h</itemPath>
-    <itemPath>spi.c</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

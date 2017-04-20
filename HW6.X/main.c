@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ILI9163C.h"
+#include "spi.h"
 #include <xc.h>
 #include <sys/attribs.h>
 
@@ -74,9 +75,6 @@ void character(char c, unsigned short x, unsigned short y){
         }
     }
     int main(){
-        __builtin_disable_interrupts();
-        
-        __builtin_enable_interrupts();
         LCD_init();
         
         LCD_clearScreen(0xFFFF);
