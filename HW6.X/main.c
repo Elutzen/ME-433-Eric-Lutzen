@@ -76,7 +76,7 @@ void character(char c, unsigned short x, unsigned short y){
     }
     int main(){
         LCD_init();
-        
+        spi_init();
         LCD_clearScreen(0xFFFF);
         char message[200];
         sprintf(message,"HELLO WORLD");
