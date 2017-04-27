@@ -38,27 +38,51 @@ void string(char * msg, int x, int y) {
         j++;
     }
 }
+void rect(int x1, int x2, int y1, int y2,unsigned short color){
+    int i,j;
+    for(i = x1;i<x2;i++){
+        for(j=y1;j<y2;j++){
+            LCD_drawPixel(i,j,color);
+        }
+    }
+}
+void progress(int length){
+    rect(0,128,50,55,WHITE);
+    int neg = 0;
+    if(length<0){
+        neg = 1;
+        length = length* -1;
+    }
+    length = length/2;
+    if(neg){
+        rect(64-length,64,50,55,GREEN);
+        
+    }
+    else{
+        rect(64,64+length,50,55,GREEN);
+    }
+}
 int main(){
         __builtin_disable_interrupts();
         SPI1_init();
         LCD_init();
         __builtin_enable_interrupts();
-        LCD_clearScreen(YELLOW);
+        LCD_clearScreen(WHITE);
         char message[200];
     sprintf(message, "HELLO WORLD");
-    string(message, 28, 30);
+    string(message, 32, 30);
     int count = -100;
     while (1) {
-        _CP0_SET_COUNT(0);
-        while (_CP0_GET_COUNT() < 12000) {}
+       _CP0_SET_COUNT(0);
+        while (_CP0_GET_COUNT() < 24000) {}
         _CP0_SET_COUNT(0);
         count ++;
-        if(count < 99){
+        if(count > 99){
             count = -100;
         }
-        sprintf(message,"%3f",count);
-        string(message, 28, 30);
-        
+       sprintf(message,"%4d",count);
+       string(message, 50, 42);
+       rect(50,55,50,55,GREEN); 
     }
     return 0;
 }
