@@ -74,7 +74,7 @@ int main(){
     int count = -100;
     while (1) {
        _CP0_SET_COUNT(0);
-        while (_CP0_GET_COUNT() < 24000) {}
+        while (_CP0_GET_COUNT() < 64000) {}
         _CP0_SET_COUNT(0);
         count ++;
         if(count > 99){
@@ -82,7 +82,7 @@ int main(){
         }
        sprintf(message,"%4d",count);
        string(message, 50, 42);
-       rect(50,55,50,55,GREEN); 
+       progress(count);
     }
     return 0;
 }
