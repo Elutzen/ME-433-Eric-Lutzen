@@ -4,6 +4,10 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>ILI9163C.c</itemPath>
+      <itemPath>ILI9163C.h</itemPath>
+      <itemPath>spi.c</itemPath>
+      <itemPath>spi.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

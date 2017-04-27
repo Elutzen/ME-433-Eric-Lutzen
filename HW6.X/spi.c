@@ -5,15 +5,15 @@ void spi_init(){
     SDI1Rbits.SDI1R = 0b0100;
     RPA1Rbits.RPA1R = 0b0011;
     TRISBbits.TRISB7 = 0;
-    LATBbits.LATB7 = 1;
+    LATBbits.LATB15 = 1;
     
     ANSELBbits.ANSB15 = 0;
-    TRISBbits.TRISB7 = 0;
+    TRISBbits.TRISB15 = 0;
     LATBbits.LATB15 = 0;
     
     SPI1CON = 0;
     SPI1BUF;
-    SPI1BRG;
+    SPI1BRG = 1;
     SPI1STATbits.SPIROV = 0;
     SPI1CONbits.CKE = 1;
     SPI1CONbits.MSTEN = 1;
