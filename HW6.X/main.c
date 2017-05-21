@@ -69,7 +69,7 @@ int main(){
         __builtin_enable_interrupts();
         LCD_clearScreen(WHITE);
         char message[200];
-    sprintf(message, "HELLO WORLD");
+    sprintf(message, "TEST");
     string(message, 32, 30);
     int count = -100;
     while (1) {
