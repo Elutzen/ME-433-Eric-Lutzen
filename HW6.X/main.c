@@ -22,7 +22,7 @@ unsigned char i2c_master_recv(void); // receive a byte of data
 void i2c_master_ack(int val); // send an ACK (0) or NACK (1)
 void i2c_master_stop(void);
 
-#define SLAVE_ADDR 0b01101001
+#define SLAVE_ADDR 0b1101011
 
 void i2c_master_setup(void) {
     I2C2BRG = 390; // I2CBRG = [1/(2*Fsck) - PGD]*Pblck - 2 
@@ -221,6 +221,9 @@ int main() {
     int count = -100;
     int length = 14;
     char msg[100];
+     int aX= 0;
+     int aY = 0;
+     int aZ = 0;
     unsigned char data[length];
     while (1) {
         _CP0_SET_COUNT(0);
@@ -243,12 +246,20 @@ int main() {
         short accelX = combineData(data, 8);
         short accelY = combineData(data, 10);
         short accelZ = combineData(data, 12);
-        sprintf(msg, "AccelX: %d", accelX);
+        aX += accelX;
+        aY += accelY;
+        aZ += accelZ;
+        if(count%2 ==0){
+            aX /= 2;
+            aY /= 2;
+            aZ /= 2;
+        sprintf(msg, "AccelX: %d", aX);
         string(msg, 28, 56);
-        sprintf(msg, "AccelY: %d", accelY);
+        sprintf(msg, "AccelY: %d", aY);
         string(msg, 28, 70);
-        sprintf(msg, "AccelZ: %d", accelZ);
+        sprintf(msg, "AccelZ: %d", aZ);
         string(msg, 28, 80); 
+        }
     }
     return 0;
 }
