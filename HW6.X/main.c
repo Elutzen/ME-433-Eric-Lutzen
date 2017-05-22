@@ -11,6 +11,7 @@
 #include "PIC32.h"
 #include <xc.h>
 #include <sys/attribs.h>
+#include "i2c_master_noint.h"
 
 void character(char c, unsigned short x, unsigned short y){
     int temp = (int)c - 32;
@@ -66,6 +67,7 @@ int main(){
         __builtin_disable_interrupts();
         SPI1_init();
         LCD_init();
+        init_IMU();
         __builtin_enable_interrupts();
         LCD_clearScreen(WHITE);
         char message[200];
@@ -83,6 +85,23 @@ int main(){
        sprintf(message,"%4d",count);
        string(message, 50, 42);
        progress(count);
+       
+       I2C_read_multiple(SLAVE_ADDR, 0x20, data, length);
+    short temp = combineData(data,0);
+    short gyroX = combineData(data,2);
+    short gyroY = combineData(data,4);
+    short gyroZ = combineData(data,6);
+    short accelX = combineData(data,8);
+    short accelY = combineData(data,10);
+    short accelZ = combineData(data,12);
+    sprintf(msg,"AccelX: %d",accelX);
+    string(msg,28,56,CYAN);
+    sprintf(msg,"AccelY: %d",accelY);
+    string(msg,28,70,CYAN);
+    sprintf(msg,"GyroX: %d",gyroX);
+    string(msg,28,80,CYAN);
+    sprintf(msg,"GyroY: %d",gyroY);
+    string(msg,28,90,CYAN);
     }
     return 0;
 }
