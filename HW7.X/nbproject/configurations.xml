@@ -10,6 +10,8 @@
       <itemPath>spi.h</itemPath>
       <itemPath>i2c_master_noint.h</itemPath>
       <itemPath>i2c_master_noint.c</itemPath>
+      <itemPath>imu.h</itemPath>
+      <itemPath>imu.c</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
