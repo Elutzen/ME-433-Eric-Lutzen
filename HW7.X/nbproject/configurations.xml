@@ -8,13 +8,12 @@
       <itemPath>ILI9163C.h</itemPath>
       <itemPath>spi.c</itemPath>
       <itemPath>spi.h</itemPath>
-      <itemPath>i2c_slave.h</itemPath>
       <itemPath>i2c_master_noint.h</itemPath>
+      <itemPath>i2c_master_noint.c</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
-      <itemPath>i2c_master_noint.c</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
