@@ -351,8 +351,8 @@ UsedLibrary="me433_lib.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="408 0 1365 727"
-State=0
+Loc="399 0 1356 695"
+State=2
 Number=0
 
 [Desktop]
